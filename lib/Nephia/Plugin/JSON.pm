@@ -1,10 +1,10 @@
-package Voson::Plugin::JSON;
+package Nephia::Plugin::JSON;
 use 5.008005;
 use strict;
 use warnings;
-use parent 'Voson::Plugin';
+use parent 'Nephia::Plugin';
 use JSON;
-use Voson::Response;
+use Nephia::Response;
 
 our $VERSION = "0.01";
 
@@ -21,7 +21,7 @@ sub exports { qw/json_res encode_json decode_json/ }
 sub json_res {
     my ($self, $context) = @_;
     return sub ($) {
-        $context->set(res => Voson::Response->new(
+        $context->set(res => Nephia::Response->new(
             200, 
             [
                 'Content-Type'           => 'applcation/json',
@@ -51,11 +51,11 @@ __END__
 
 =head1 NAME
 
-Voson::Plugin::JSON - A plugin for Voson that provides JSON Response DSL
+Nephia::Plugin::JSON - A plugin for Nephia that provides JSON Response DSL
 
 =head1 SYNOPSIS
 
-    use Voson plugins => ['JSON'];
+    use Nephia plugins => ['JSON'];
     app {
         json_res +{ 
             name  => 'ytnobody',
@@ -65,13 +65,13 @@ Voson::Plugin::JSON - A plugin for Voson that provides JSON Response DSL
 
 =head1 DESCRIPTION
 
-Voson::Plugin::JSON provides three DSL that is about JSON.
+Nephia::Plugin::JSON provides three DSL that is about JSON.
 
 =head1 DSL
 
 =head2 json_res $hashref
 
-Returns a Voson::Response that contains application/json contents.
+Returns a Nephia::Response that contains application/json contents.
 
 =head2 encode_json $hashref
 

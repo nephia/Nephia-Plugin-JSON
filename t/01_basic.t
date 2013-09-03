@@ -3,12 +3,12 @@ use warnings;
 use Test::More;
 use Plack::Test;
 use HTTP::Request::Common;
-use Voson::Core;
+use Nephia::Core;
 use utf8;
 use Encode;
 
 subtest normal => sub {
-    my $v = Voson::Core->new(
+    my $v = Nephia::Core->new(
         plugins => ['JSON'],
         app => sub { json_res({foo => 'ばー'}) },
     );

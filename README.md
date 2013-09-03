@@ -1,10 +1,10 @@
 # NAME
 
-Voson::Plugin::JSON - A plugin for Voson that provides JSON Response DSL
+Nephia::Plugin::JSON - A plugin for Nephia that provides JSON Response DSL
 
 # SYNOPSIS
 
-    use Voson plugins => ['JSON'];
+    use Nephia plugins => ['JSON'];
     app {
         json_res +{ 
             name  => 'ytnobody',
@@ -14,13 +14,13 @@ Voson::Plugin::JSON - A plugin for Voson that provides JSON Response DSL
 
 # DESCRIPTION
 
-Voson::Plugin::JSON provides three DSL that is about JSON.
+Nephia::Plugin::JSON provides three DSL that is about JSON.
 
 # DSL
 
 ## json\_res $hashref
 
-Returns a Voson::Response that contains application/json contents.
+Returns a Nephia::Response that contains application/json contents.
 
 ## encode\_json $hashref
 
