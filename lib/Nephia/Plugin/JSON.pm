@@ -3,7 +3,7 @@ use 5.008005;
 use strict;
 use warnings;
 use parent 'Nephia::Plugin';
-use JSON;
+use JSON ();
 use Nephia::Response;
 
 our $VERSION = "0.01";

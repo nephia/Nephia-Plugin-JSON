@@ -56,13 +56,13 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/ytnobody/Nephia-Plugin-JSON/issues"
+         "web" : "https://github.com/nephia/Nephia-Plugin-JSON/issues"
       },
-      "homepage" : "https://github.com/ytnobody/Nephia-Plugin-JSON",
+      "homepage" : "https://github.com/nephia/Nephia-Plugin-JSON",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ytnobody/Nephia-Plugin-JSON.git",
-         "web" : "https://github.com/ytnobody/Nephia-Plugin-JSON"
+         "url" : "git://github.com/nephia/Nephia-Plugin-JSON.git",
+         "web" : "https://github.com/nephia/Nephia-Plugin-JSON"
       }
    },
    "version" : "0.01"
