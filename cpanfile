@@ -1,5 +1,5 @@
 requires 'perl', '5.008001';
-requires 'Nephia';
+requires 'Nephia', '0.80';
 requires 'JSON';
 
 on 'test' => sub {
