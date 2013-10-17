@@ -6,7 +6,7 @@ use parent 'Nephia::Plugin';
 use JSON ();
 use Nephia::Response;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 sub new {
     my ($class, %opts) = @_;
@@ -24,7 +24,7 @@ sub json_res {
         $context->set(res => Nephia::Response->new(
             200, 
             [
-                'Content-Type'           => 'application/json',
+                'Content-Type'           => 'application/json; charset=UTF-8',
                 'X-Content-Type-Options' => 'nosniff',  ### For IE 9 or later. See http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1297
                 'X-Frame-Options'        => 'DENY',     ### Suppress loading web-page into iframe. See http://blog.mozilla.org/security/2010/09/08/x-frame-options/
                 'Cache-Control'          => 'private',  ### no public cache
