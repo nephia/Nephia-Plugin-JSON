@@ -16,6 +16,17 @@ Nephia::Plugin::JSON - A plugin for Nephia that provides JSON Response DSL
 
 Nephia::Plugin::JSON provides three DSL that is about JSON.
 
+# CONFIG
+
+## enable\_api\_status\_header
+
+If you define it as true, json\_res returns with 'X-API-Status' header.
+
+    use Nephia plugins => ['JSON' => {enable_api_status_header => 1}];
+    ...
+
+
+
 # DSL
 
 ## json\_res $hashref

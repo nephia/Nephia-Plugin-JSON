@@ -21,15 +21,20 @@ sub exports { qw/json_res encode_json decode_json/ }
 sub json_res {
     my ($self, $context) = @_;
     return sub ($) {
+        my $content_body = $_[0];
+        my $headers = [
+            'Content-Type'           => 'application/json; charset=UTF-8',
+            'X-Content-Type-Options' => 'nosniff',  ### For IE 9 or later. See http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1297
+            'X-Frame-Options'        => 'DENY',     ### Suppress loading web-page into iframe. See http://blog.mozilla.org/security/2010/09/08/x-frame-options/
+            'Cache-Control'          => 'private',  ### no public cache
+        ]; 
+        if ($self->{enable_api_status_header}) {
+            $content_body->{status} ||= 200;
+            push @$headers, ('X-API-Status', $content_body->{status});
+        }
         $context->set(res => Nephia::Response->new(
-            200, 
-            [
-                'Content-Type'           => 'application/json; charset=UTF-8',
-                'X-Content-Type-Options' => 'nosniff',  ### For IE 9 or later. See http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-1297
-                'X-Frame-Options'        => 'DENY',     ### Suppress loading web-page into iframe. See http://blog.mozilla.org/security/2010/09/08/x-frame-options/
-                'Cache-Control'          => 'private',  ### no public cache
-            ], 
-            $self->app->{json_obj}->encode($_[0])
+            200, $headers, 
+            $self->app->{json_obj}->encode($content_body)
         ));
     };
 }
@@ -66,6 +71,16 @@ Nephia::Plugin::JSON - A plugin for Nephia that provides JSON Response DSL
 =head1 DESCRIPTION
 
 Nephia::Plugin::JSON provides three DSL that is about JSON.
+
+=head1 CONFIG
+
+=head2 enable_api_status_header
+
+If you define it as true, json_res returns with 'X-API-Status' header.
+
+    use Nephia plugins => ['JSON' => {enable_api_status_header => 1}];
+    ...
+
 
 =head1 DSL
 
